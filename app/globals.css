@@ -14,9 +14,6 @@
     --main-brown-light: #c9a47a;
   }
 
-  * {
-    @apply border-border;
-  }
 
   body {
     @apply bg-main-yellow-light text-main-brown-dark antialiased;
