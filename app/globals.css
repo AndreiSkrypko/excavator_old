@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --main-yellow: #FFE082;
+    --main-orange: #FFB74D;
+    --main-blue: #b3b9c9;
+    --main-blue-light: #dbe3ea;
+    --main-brown: #8D6748;
+    --main-brown-dark: #5a4636;
+    --main-yellow-light: #FFF8E1;
+    --main-brown-light: #c9a47a;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-main-yellow-light text-main-brown-dark antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .btn-gradient {
+    @apply bg-gradient-to-r from-main-brown via-main-brown-light to-main-yellow text-white font-bold rounded-full px-8 py-4 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:from-main-yellow hover:via-main-orange hover:to-main-brown;
+    box-shadow: 0 4px 16px rgba(141, 103, 72, 0.3);
+  }
+
+  .btn-gradient:hover {
+    box-shadow: 0 8px 32px rgba(255, 214, 0, 0.4);
+  }
+
+  .btn-orange {
+    @apply bg-main-orange text-main-brown-dark font-bold rounded-full px-6 py-3 transition-all duration-200 hover:bg-main-brown hover:text-white;
+    box-shadow: 0 2px 8px rgba(255, 183, 77, 0.3);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 hover:shadow-2xl;
+  }
+
+  .section-title {
+    @apply text-main-brown-dark font-black text-4xl md:text-5xl mb-4 relative inline-block;
+    text-shadow: 0 2px 12px rgba(201, 164, 122, 0.2);
+    letter-spacing: 1.5px;
+  }
+
+  .section-title::after {
+    content: '';
+    @apply block w-16 h-1 mx-auto mt-4 rounded-full;
+    background: linear-gradient(90deg, var(--main-brown) 0%, var(--main-yellow) 100%);
+    opacity: 0.8;
+  }
+
+  .section-subtitle {
+    @apply text-main-brown text-lg md:text-xl mb-8 opacity-85 font-medium;
+  }
+
+  .section-divider {
+    @apply w-full h-0.5 my-10 opacity-70 transition-all duration-300 hover:opacity-100;
+    background: linear-gradient(90deg, transparent 0%, var(--main-blue-light) 30%, var(--main-blue) 50%, var(--main-blue-light) 70%, transparent 100%);
+    box-shadow: 0 0 8px rgba(179, 185, 201, 0.2);
+  }
+
+  .section-divider:hover {
+    box-shadow: 0 0 16px rgba(219, 227, 234, 0.4);
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-lg bg-white/80;
+    box-shadow: 0 8px 32px rgba(141, 103, 72, 0.1);
+  }
+
+  .service-card {
+    @apply bg-white rounded-3xl overflow-hidden shadow-xl card-hover;
+    box-shadow: 0 4px 32px rgba(201, 164, 122, 0.15);
+  }
+
+  .advantage-card {
+    @apply bg-gradient-to-br from-main-yellow-light via-white to-main-yellow-light rounded-2xl p-6 shadow-lg card-hover h-full;
+    box-shadow: 0 4px 32px rgba(201, 164, 122, 0.15);
+  }
+
+  .review-card {
+    @apply bg-white rounded-2xl p-6 shadow-lg card-hover h-full;
+    box-shadow: 0 4px 32px rgba(201, 164, 122, 0.15);
+  }
+
+  .price-card {
+    @apply bg-gradient-to-br from-main-yellow-light via-white to-main-yellow rounded-3xl p-8 shadow-2xl;
+    box-shadow: 0 8px 48px rgba(201, 164, 122, 0.25);
+    border: 2.5px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .input-field {
+    @apply w-full px-6 py-4 rounded-full border-2 border-main-brown bg-main-yellow-light text-main-brown-dark font-medium transition-all duration-200 focus:outline-none focus:border-main-orange focus:ring-4 focus:ring-main-yellow/30;
+  }
+
+  .social-link {
+    @apply w-12 h-12 rounded-full flex items-center justify-center text-2xl transition-all duration-200 hover:scale-110 hover:shadow-lg;
+    box-shadow: 0 2px 8px rgba(141, 103, 72, 0.2);
+  }
+
+  .social-link.viber {
+    @apply bg-violet-500 text-white;
+  }
+
+  .social-link.telegram {
+    @apply bg-blue-500 text-white;
+  }
+
+  .social-link.instagram {
+    @apply bg-gradient-to-br from-yellow-400 via-pink-500 to-purple-600 text-white;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Анимации */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Скроллбар стилизация */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--main-yellow-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--main-brown) 0%, var(--main-yellow) 100%);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--main-yellow) 0%, var(--main-brown) 100%);
+}
+

@@ -1,0 +1,30 @@
+{
+  "name": "Excavator Lida - Аренда экскаватора в Лиде",
+  "short_name": "Excavator Lida",
+  "description": "Аренда экскаватора в Лиде и Лидском районе. Профессиональные услуги спецтехники: земляные работы, копка траншей, планировка участка, уборка снега.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF8E1",
+  "theme_color": "#FFE082",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/img/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "construction", "services"],
+  "lang": "ru",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+}
+

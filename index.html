@@ -1221,26 +1221,7 @@
         </div>
     </div>
 </section>
-<script>
-    // Калькулятор аренды экскаватора
-    function updateRentCalc() {
-      const hours = Math.max(4, parseInt(document.getElementById('hoursInput').value) || 4);
-      let total = hours * 80;
-      let discount = 0;
-      if (hours >= 10) {
-        discount = 0.1;
-        total = Math.round(total * 0.9);
-        document.getElementById('calcDiscount').style.display = '';
-      } else {
-        document.getElementById('calcDiscount').style.display = 'none';
-      }
-      document.getElementById('calcResult').textContent = `Итого: ${total} Br`;
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('hoursInput').addEventListener('input', updateRentCalc);
-      updateRentCalc();
-    });
-</script>
+<!-- Калькулятор аренды инициализируется в js/app.js -->
 <div class="section-divider-glow"></div>
 <!-- === ПРЕИМУЩЕСТВА === -->
 <section class="advantages-section py-5" style="background: linear-gradient(120deg, #fffbe6 60%, #ffe082 100%);">
@@ -1975,96 +1956,7 @@
         </lineargradient>
     </defs>
 </svg>
-<script>
-    // Параллакс-эффект для hero (только на десктопах)
-    if(window.innerWidth > 991) {
-      document.addEventListener('mousemove', function(e) {
-        const bg = document.querySelector('.hero-bg');
-        if(bg) {
-          const x = (e.clientX / window.innerWidth - 0.5) * 20;
-          const y = (e.clientY / window.innerHeight - 0.5) * 10;
-          bg.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
-        }
-      });
-    }
-    // FAQ-аккордеон
-      document.querySelectorAll('.faq-question').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const item = this.closest('.faq-item');
-          document.querySelectorAll('.faq-item').forEach(i => { if(i!==item) i.classList.remove('open'); });
-          item.classList.toggle('open');
-        });
-      });
-    // Кнопка "Вверх"
-      const scrollTopBtn = document.getElementById("scrollTopBtn");
-      window.onscroll = function () {
-        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-          scrollTopBtn.style.display = "block";
-        } else {
-          scrollTopBtn.style.display = "none";
-        }
-      };
-      scrollTopBtn.addEventListener("click", function () {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    // --- Scroll reveal для секций и разделителей ---
-    function revealOnScroll() {
-      document.querySelectorAll('.reveal, .section-divider').forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if(rect.top < window.innerHeight - 60) {
-          el.classList.add('visible');
-        }
-      });
-    }
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('DOMContentLoaded', function() {
-      revealOnScroll();
-      // Добавить reveal класс к основным секциям
-      document.querySelectorAll('.discount-section, .price-section, .advantages-section, .how-to-order-section, .services-section, .faq-section, .order-section').forEach(sec => {
-        sec.classList.add('reveal');
-      });
-      // Изначально показать разделители
-      document.querySelectorAll('.section-divider').forEach(div => div.classList.add('reveal'));
-      revealOnScroll();
-    });
-
-    // === ОТПРАВКА ФОРМЫ В TELEGRAM ===
-    // Замените значения ниже на свои:
-    const telegramBotToken = 'ВАШ_ТОКЕН'; // <-- ВСТАВЬТЕ СЮДА ТОКЕН ВАШЕГО БОТА
-    const telegramChatId = 'ВАШ_CHAT_ID'; // <-- ВСТАВЬТЕ СЮДА chat_id (группы, канала или пользователя)
-
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.getElementById('contact-form');
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          const name = form.querySelector('input[placeholder="Ваше имя"]').value.trim();
-          const phone = form.querySelector('input[placeholder="Телефон"]').value.trim();
-          const service = form.querySelector('select').value;
-          if (!name || !phone || !service) {
-            alert('Пожалуйста, заполните все поля!');
-            return;
-          }
-          const text = `📝 Новая заявка с сайта!%0AИмя: ${encodeURIComponent(name)}%0AТелефон: ${encodeURIComponent(phone)}%0AУслуга: ${encodeURIComponent(service)}`;
-          fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${telegramChatId}&text=${text}`, {
-            method: 'GET'
-          })
-          .then(response => response.json())
-          .then(data => {
-            if (data.ok) {
-              alert('Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.');
-              form.reset();
-            } else {
-              alert('Ошибка отправки. Попробуйте позже или свяжитесь по телефону.');
-            }
-          })
-          .catch(() => {
-            alert('Ошибка отправки. Попробуйте позже или свяжитесь по телефону.');
-          });
-        });
-      }
-    });
-</script>
+<!-- Старые inline скрипты перенесены в модули js/app.js, js/forms.js для лучшей организации кода -->
 <!-- === SVG-РАЗДЕЛИТЕЛЬ (ВОЛНА) === -->
 <div class="section-divider"
      style="width:100vw;min-width:100vw;left:50%;transform:translateX(-50%);position:relative;margin:0;padding:0;">
@@ -2119,29 +2011,19 @@
 </div>
 
 
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
 
-<!-- Дополнительные SEO скрипты -->
+<!-- Улучшенные JS модули приложения -->
+<script src="js/app.js" defer></script>
+<script src="js/forms.js" defer></script>
+<script src="js/analytics.js" defer></script>
+
+<!-- Дополнительные SEO скрипты и структурированные данные -->
 <script>
-// Улучшение Core Web Vitals
+// Улучшение доступности (сохранено для SEO)
 document.addEventListener('DOMContentLoaded', function() {
-    // Lazy loading для изображений
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src || img.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-        images.forEach(img => imageObserver.observe(img));
-    }
-    
     // Улучшение доступности
     document.querySelectorAll('[role="button"]').forEach(button => {
         button.addEventListener('keydown', function(e) {
@@ -2153,7 +2035,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Структурированные данные для событий
+// Структурированные данные для событий (важно для SEO)
 const eventSchema = {
     "@context": "https://schema.org",
     "@type": "Event",
